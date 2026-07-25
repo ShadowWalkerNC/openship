@@ -5,9 +5,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npx cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env --import tsx --watch src/index.ts",
-    "dev:saas": "npx cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env.saas --import tsx --watch src/index.ts",
-    "dev:local-saas": "npx cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env.local-saas --import tsx --watch src/index.ts",
+    "dev": "cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env --import tsx --watch src/index.ts",
+    "dev:saas": "cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env.saas --import tsx --watch src/index.ts",
+    "dev:local-saas": "cross-env OPENSHIP_DEV_LOCK_TAKEOVER=true node --env-file=.env.local-saas --import tsx --watch src/index.ts",
     "build": "tsup src/index.ts --format esm && node scripts/copy-assets.mjs",
     "build-release": "bun scripts/build-release.ts",
     "start": "node dist/index.js",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@types/node": "^22.13.0",
     "@types/nodemailer": "^8.0.1",
+    "cross-env": "^7.0.3",
     "tsup": "^8.5.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
