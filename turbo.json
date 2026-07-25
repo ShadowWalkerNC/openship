@@ -4,7 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", ".wasp/out/**"]
     },
     "dev": {
       "cache": false,
@@ -17,6 +17,22 @@
     "dev:local-saas": {
       "cache": false,
       "persistent": true
+    },
+    "dev:saas-app": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:saas-blog": {
+      "cache": false,
+      "persistent": true
+    },
+    "build:saas-app": {
+      "dependsOn": ["^build"],
+      "outputs": [".wasp/out/**", ".wasp/build/**"]
+    },
+    "build:saas-blog": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "lint": {
       "dependsOn": ["^build"]

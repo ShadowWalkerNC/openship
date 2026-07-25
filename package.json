@@ -9,7 +9,10 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "apps/saas/app",
+    "apps/saas/blog",
+    "apps/saas/e2e-tests"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -30,6 +33,10 @@
     "dev:web": "turbo run dev --filter=@repo/web",
     "dev:email": "turbo run dev --filter=@repo/email",
     "dev:turbo": "turbo run dev",
+    "dev:saas-app": "turbo run dev:saas-app --filter=@repo/saas-app",
+    "dev:saas-blog": "turbo run dev:saas-blog --filter=@repo/saas-blog",
+    "dev:full": "turbo run dev --filter=@repo/api --filter=@repo/dashboard --filter=@repo/saas-app --filter=@repo/saas-blog --concurrency=15",
+    "build:saas": "turbo run build:saas-app build:saas-blog --filter=@repo/saas-app --filter=@repo/saas-blog",
     "clean": "ps -A -o pid,command 2>/dev/null | grep -E 'src/index\\.ts|next/dist/bin/next' | grep -v grep | awk '{print $1}' | xargs -I {} kill -9 {} 2>/dev/null; for p in 4000 4100 3001 3002; do pid=$(lsof -ti tcp:$p 2>/dev/null); [ -n \"$pid\" ] && kill -9 $pid 2>/dev/null; done; echo 'cleaned'",
     "lint": "turbo run lint",
     "test": "turbo run test",
@@ -47,7 +54,7 @@
     "turbo": "^2.8.14",
     "typescript": "^5.9.3"
   },
-  "packageManager": "bun@1.3.10",
+  "packageManager": "npm@10.2.4",
   "engines": {
     "node": ">=22.0.0"
   },

@@ -1,3 +1,10 @@
 packages:
   - "apps/*"
   - "packages/*"
+  # Open SaaS (Wasp) apps — nested under apps/saas/
+  - "apps/saas/app"
+  - "apps/saas/blog"
+  - "apps/saas/e2e-tests"
+  # Wasp generates its own internal workspace packages here at build time
+  - "apps/saas/app/.wasp/out/*"
+  - "apps/saas/app/.wasp/out/sdk/wasp"
